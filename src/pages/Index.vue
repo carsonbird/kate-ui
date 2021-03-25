@@ -80,7 +80,7 @@
           <v-subheader>Urgent</v-subheader>
           <swipe-out v-for="item in urgent" :key="item">
             <template>
-              <v-list-item>
+              <v-list-item @click="half">
                 <v-list-item-avatar color="red">
                   {{ item.avatar }}
                 </v-list-item-avatar>
@@ -127,25 +127,51 @@
 
         <v-list-item-group two-line>
           <v-subheader>Not Urgent</v-subheader>
-          <v-list-item v-for="item in noturgent" :key="item">
-            <v-list-item-avatar color="green">
-              {{ item.avatar }}
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ item.senders.join(', ') }}
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                <v-icon size="16">
-                  {{ item.icon }}
-                </v-icon>
-                {{ item.subject }}
-              </v-list-item-subtitle>
-            </v-list-item-content>
-            <v-list-item-action>
-              <v-list-item-action-text v-text="item.duration"></v-list-item-action-text>
-            </v-list-item-action>
-          </v-list-item>
+          <swipe-out v-for="item in noturgent" :key="item">
+            <template>
+              <v-list-item @click="half">
+                <v-list-item-avatar color="blue">
+                  {{ item.avatar }}
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{ item.senders.join(', ') }}
+                  </v-list-item-title>
+                  <v-list-item-subtitle>
+                    <v-icon size="16">
+                      {{ item.icon }}
+                    </v-icon>
+                    {{ item.subject }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+                <v-list-item-action>
+                  <v-list-item-action-text v-text="item.duration"></v-list-item-action-text>
+                </v-list-item-action>
+              </v-list-item>
+            </template>
+            <template v-slot:left="{}">
+                <v-btn elevation="0" tile dark color="primary" fab class="my-auto">
+                  <v-icon dark>mdi-eye</v-icon>
+                </v-btn>
+            </template>
+            <template v-slot:right="{ }">
+              <v-btn elevation="0" tile dark color="grey" fab class="my-auto">
+                <v-icon dark>mdi-reply</v-icon>
+              </v-btn>
+              <v-btn elevation="0" tile dark color="grey" fab class="my-auto">
+                <v-icon dark>mdi-share</v-icon>
+              </v-btn>
+              <v-btn elevation="0" tile dark color="primary" fab class="my-auto">
+                <v-icon dark>mdi-pencil</v-icon>
+              </v-btn>
+              <v-btn elevation="0" tile dark color="green" fab class="my-auto">
+                <v-icon dark>mdi-heart</v-icon>
+              </v-btn>
+              <v-btn elevation="0" tile dark color="red" fab class="my-auto">
+                <v-icon>mdi-delete</v-icon>
+              </v-btn>
+            </template>
+          </swipe-out>
         </v-list-item-group>
         <v-fab-transition>
           <v-btn fab large dark bottom right fixed color="primary">
@@ -161,7 +187,7 @@
       </v-fab-transition>
       </v-main>
       <v-footer>
-        <Drawer ref="swipeableBottomSheet">
+        <swipeable-bottom-sheet ref="swipeableBottomSheet">
         <v-card tile>
         <v-progress-linear :value="50" class="my-0" height="3"></v-progress-linear>
 
@@ -196,7 +222,7 @@
           </v-list-item>
         </v-list>
       </v-card>
-      </Drawer>
+      </swipeable-bottom-sheet>
       </v-footer>
     </v-app>
     <v-bottom-sheet inset hide-overlay :retain-focus="False" :fullscreen="isFullscreen">
@@ -256,7 +282,12 @@
 <script>
   import 'vue-swipe-actions/dist/vue-swipe-actions.css';
 
+  import { SwipeableBottomSheet } from "vue-swipeable-bottom-sheet"
+
   export default {
+    components: {
+      SwipeableBottomSheet
+    },
     data: () => ({
       drawer: null,
       selectedItem: 0,
