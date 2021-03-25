@@ -32,5 +32,5 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.component('SwipeOut', SwipeOut);
 
   // Set default layout as a global component
-  Vue.component('Layout', DefaultLayout)
+  // Vue.component('Layout', DefaultLayout)
 }
