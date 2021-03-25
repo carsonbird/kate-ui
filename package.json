@@ -11,6 +11,7 @@
   "dependencies": {
     "gh-pages": "^3.1.0",
     "gridsome": "^0.7.0",
+    "vue-swipe-actions": "*",
     "vue-swipeable-bottom-sheet": "^0.0.5",
     "vuetify": "^2.4.8"
   },

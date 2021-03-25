@@ -4,9 +4,9 @@
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-// import { SwipeList, SwipeOut } from 'vue-swipe-actions'
+import { SwipeList, SwipeOut } from 'vue-swipe-actions'
 
-// import 'vue-swipe-actions/dist/vue-swipe-actions.css';
+import 'vue-swipe-actions/dist/vue-swipe-actions.css';
 
 // import DefaultLayout from '~/layouts/Default.vue'
 
@@ -30,8 +30,8 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   
   appOptions.vuetify = new Vuetify(opts);
 
-  // Vue.component('SwipeList', SwipeList);
-  // Vue.component('SwipeOut', SwipeOut);
+  Vue.component('SwipeList', SwipeList);
+  Vue.component('SwipeOut', SwipeOut);
 
   Vue.component('Drawer', SwipeableBottomSheet);
 
