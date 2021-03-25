@@ -104,7 +104,7 @@
           <!-- <swipe-out>
             TODO
           </swipe-out> -->
-          <v-list-item-avatar color="grey">
+          <v-list-item-avatar color="red">
             {{ item.avatar }}
           </v-list-item-avatar>
           <v-list-item-content>
@@ -127,7 +127,7 @@
       <v-list-item-group two-line>
         <v-subheader>Not Urgent</v-subheader>
         <v-list-item v-for="item in noturgent" :key="item">
-          <v-list-item-avatar color="grey">
+          <v-list-item-avatar color="green">
             {{ item.avatar }}
           </v-list-item-avatar>
           <v-list-item-content>
