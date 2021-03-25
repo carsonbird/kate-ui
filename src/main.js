@@ -3,7 +3,14 @@
 
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+
+import { SwipeList, SwipeOut } from 'vue-swipe-actions'
+
+import 'vue-swipe-actions/dist/vue-swipe-actions.css';
+
 import DefaultLayout from '~/layouts/Default.vue'
+
+// import '~/assets/styles.css'
 
 export default function (Vue, { router, head, isClient, appOptions }) {
   head.link.push({
@@ -20,6 +27,9 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.use(Vuetify)
   
   appOptions.vuetify = new Vuetify(opts);
+
+  Vue.component('SwipeList', SwipeList);
+  Vue.component('SwipeOut', SwipeOut);
 
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)

@@ -99,7 +99,11 @@
     <v-main>
       <v-list-item-group two-line>
         <v-subheader>Urgent</v-subheader>
+        
         <v-list-item v-for="item in urgent" :key="item">
+          <!-- <swipe-out>
+            TODO
+          </swipe-out> -->
           <v-list-item-avatar color="grey">
             {{ item.avatar }}
           </v-list-item-avatar>
@@ -143,7 +147,8 @@
         </v-list-item>
       </v-list-item-group>
       <v-fab-transition>
-        <v-btn fab large dark bottom right>
+        <v-btn fab large dark bottom right fixed color="primary">
+          <v-icon>mdi-microphone</v-icon>
         </v-btn>
       </v-fab-transition>
     </v-main>
