@@ -6,7 +6,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 import { SwipeList, SwipeOut } from 'vue-swipe-actions'
 
-import 'vue-swipe-actions/dist/vue-swipe-actions.css';
+// import 'vue-swipe-actions/dist/vue-swipe-actions.css';
 
 // import DefaultLayout from '~/layouts/Default.vue'
 

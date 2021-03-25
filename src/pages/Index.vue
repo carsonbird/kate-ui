@@ -252,6 +252,7 @@
 </template>
 
 <script>
+import 'vue-swipe-actions/dist/vue-swipe-actions.css';
   export default {
     data: () => ({
       drawer: null,
