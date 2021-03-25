@@ -187,7 +187,7 @@
       </v-fab-transition>
       </v-main>
       <v-footer>
-        <swipeable-bottom-sheet ref="swipeableBottomSheet">
+        <!-- <swipeable-bottom-sheet ref="swipeableBottomSheet">
         <v-card tile>
         <v-progress-linear :value="50" class="my-0" height="3"></v-progress-linear>
 
@@ -222,7 +222,7 @@
           </v-list-item>
         </v-list>
       </v-card>
-      </swipeable-bottom-sheet>
+      </swipeable-bottom-sheet> -->
       </v-footer>
     </v-app>
     <v-bottom-sheet inset hide-overlay :retain-focus="False" :fullscreen="isFullscreen">
@@ -282,11 +282,11 @@
 <script>
   import 'vue-swipe-actions/dist/vue-swipe-actions.css';
 
-  import { SwipeableBottomSheet } from "vue-swipeable-bottom-sheet"
+  // import { SwipeableBottomSheet } from "vue-swipeable-bottom-sheet"
 
   export default {
     components: {
-      SwipeableBottomSheet
+      // SwipeableBottomSheet
     },
     data: () => ({
       drawer: null,
