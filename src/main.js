@@ -8,7 +8,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 // import 'vue-swipe-actions/dist/vue-swipe-actions.css';
 
-import DefaultLayout from '~/layouts/Default.vue'
+// import DefaultLayout from '~/layouts/Default.vue'
 
 // import '~/assets/styles.css'
 
@@ -36,5 +36,5 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   Vue.component('Drawer', SwipeableBottomSheet);
 
   // Set default layout as a global component
-  Vue.component('Layout', DefaultLayout)
+  // Vue.component('Layout', DefaultLayout)
 }
