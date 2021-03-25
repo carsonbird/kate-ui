@@ -1,179 +1,188 @@
 <template>
-  <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-    >
-      <v-list-item>
-        <v-list-item-avatar color="primary" size="48">
-          CB
-        </v-list-item-avatar>
-        <!-- <v-list-item-title>
-          Carson Bird
-        </v-list-item-title>
-        <v-list-item-subtitle>
-          Champion
-        </v-list-item-subtitle> -->
+  <div>
+    <v-app id="inspire">
+      <v-navigation-drawer v-model="drawer" app>
+        <v-list-item>
+          <v-list-item-avatar color="primary" size="48">
+            CB
+          </v-list-item-avatar>
 
-        <v-list-item-content>
-          <v-list-item-title class="title">
-            Carson Bird
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Champion
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list
-        shaped
-      >
-        <v-list-item-group v-model="selectedItem" color="primary">
-          <v-list-item
-            v-for="item in items"
-            :key="item.title"
-            link
-          >
-            <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-      <template v-slot:append>
+          <v-list-item-content>
+            <v-list-item-title class="title">
+              Carson Bird
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              Champion
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
 
         <v-divider></v-divider>
 
-        <v-list-item dense>
-          <v-list-item-content>
-            Version 0.0.1
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-btn icon>
-              <v-icon>mdi-information</v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </v-list-item>
-      </template>
-    </v-navigation-drawer>
+        <v-list shaped>
+          <v-list-item-group v-model="selectedItem" color="primary">
+            <v-list-item v-for="item in items" :key="item.title" link>
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
 
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+        <template v-slot:append>
 
-      <v-toolbar-title>Inbox</v-toolbar-title>
+          <v-divider></v-divider>
 
-      <v-spacer></v-spacer>
+          <v-list-item dense>
+            <v-list-item-content>
+              Version 0.0.1
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-btn icon>
+                <v-icon>mdi-information</v-icon>
+              </v-btn>
+            </v-list-item-action>
+          </v-list-item>
+        </template>
+      </v-navigation-drawer>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+      <v-app-bar app>
+        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+        <v-toolbar-title>Inbox</v-toolbar-title>
 
-      <template v-slot:extension>
-        <v-tabs
-          v-model="tab"
-          fixed-tabs
+        <v-spacer></v-spacer>
 
-        >
-          <v-tabs-slider></v-tabs-slider>
-
-          <v-tab
-            v-for="tab in tabs"
-            :key="tab"
-          >
-            <v-icon>{{ tab }}</v-icon>
-          </v-tab>
-        </v-tabs>
-      </template>
-    </v-app-bar>
-
-    <v-main>
-      <v-list-item-group two-line>
-        <v-subheader>Urgent</v-subheader>
-        
-        <v-list-item v-for="item in urgent" :key="item">
-          <!-- <swipe-out>
-            TODO
-          </swipe-out> -->
-          <v-list-item-avatar color="red">
-            {{ item.avatar }}
-          </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ item.senders.join(', ') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              <v-icon size="16">
-                {{ item.icon }}
-              </v-icon>
-              {{ item.subject }}
-            </v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-list-item-action-text v-text="item.duration"></v-list-item-action-text>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list-item-group>
-
-      <v-list-item-group two-line>
-        <v-subheader>Not Urgent</v-subheader>
-        <v-list-item v-for="item in noturgent" :key="item">
-          <v-list-item-avatar color="green">
-            {{ item.avatar }}
-          </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ item.senders.join(', ') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              <v-icon size="16">
-                {{ item.icon }}
-              </v-icon>
-              {{ item.subject }}
-            </v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-            <v-list-item-action-text v-text="item.duration"></v-list-item-action-text>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list-item-group>
-      <v-fab-transition>
-        <v-btn fab large dark bottom right fixed color="primary">
-          <v-icon>mdi-microphone</v-icon>
+        <v-btn icon>
+          <v-icon>mdi-magnify</v-icon>
         </v-btn>
-      </v-fab-transition>
-    </v-main>
 
-    <v-bottom-sheet
-      inset
-      hide-overlay
-      :retain-focus="False"
-    >
+        <v-btn icon>
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+
+        <template v-slot:extension>
+          <v-tabs v-model="tab" fixed-tabs>
+            <v-tabs-slider></v-tabs-slider>
+
+            <v-tab v-for="tab in tabs" :key="tab">
+              <v-icon>{{ tab }}</v-icon>
+            </v-tab>
+          </v-tabs>
+        </template>
+      </v-app-bar>
+
+      <v-main>
+        <v-list-item-group two-line>
+          <v-subheader>Urgent</v-subheader>
+
+          <v-list-item v-for="item in urgent" :key="item">
+            <!-- <swipe-out>
+              TODO
+            </swipe-out> -->
+            <v-list-item-avatar color="red">
+              {{ item.avatar }}
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ item.senders.join(', ') }}
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                <v-icon size="16">
+                  {{ item.icon }}
+                </v-icon>
+                {{ item.subject }}
+              </v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-list-item-action-text v-text="item.duration"></v-list-item-action-text>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list-item-group>
+
+        <v-list-item-group two-line>
+          <v-subheader>Not Urgent</v-subheader>
+          <v-list-item v-for="item in noturgent" :key="item">
+            <v-list-item-avatar color="green">
+              {{ item.avatar }}
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ item.senders.join(', ') }}
+              </v-list-item-title>
+              <v-list-item-subtitle>
+                <v-icon size="16">
+                  {{ item.icon }}
+                </v-icon>
+                {{ item.subject }}
+              </v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-list-item-action-text v-text="item.duration"></v-list-item-action-text>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list-item-group>
+        <v-fab-transition>
+          <v-btn fab large dark bottom right fixed color="primary">
+            <v-badge
+              color="grey"
+              content="draft"
+              left
+              bottom
+            >
+            <v-icon>mdi-microphone</v-icon>
+            </v-badge>
+          </v-btn>
+      </v-fab-transition>
+      </v-main>
+      <Drawer ref="swipeableBottomSheet">
+        <v-card tile>
+        <v-progress-linear :value="50" class="my-0" height="3"></v-progress-linear>
+
+        <v-list>
+          <v-list-item dense>
+            <v-list-item-content>
+              <v-list-item-title>Sender 1, Sender 2</v-list-item-title>
+              <v-list-item-subtitle>
+                <v-icon size="16">mdi-forum</v-icon>
+                subtitle of message, potentially really long
+              </v-list-item-subtitle>
+            </v-list-item-content>
+
+            <v-list-item-icon>
+              <v-btn icon>
+                <v-icon>mdi-restore</v-icon>
+              </v-btn>
+            </v-list-item-icon>
+
+            <v-list-item-icon :class="{ 'mx-5': $vuetify.breakpoint.mdAndUp }">
+              <v-btn icon color="primary">
+                <v-icon>mdi-play</v-icon>
+              </v-btn>
+            </v-list-item-icon>
+
+            <v-list-item-icon class="ml-0" :class="{ 'mr-3': $vuetify.breakpoint.mdAndUp }"
+              @click="isFullscreen = !isFullscreen">
+              <v-btn icon>
+                <v-icon>mdi-chevron-up</v-icon>
+              </v-btn>
+            </v-list-item-icon>
+          </v-list-item>
+        </v-list>
+      </v-card>
+      </Drawer>
+    </v-app>
+    <v-bottom-sheet inset hide-overlay :retain-focus="False" :fullscreen="isFullscreen">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="red"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
+        <v-btn color="red" dark v-bind="attrs" v-on="on">
           Open Player
         </v-btn>
       </template>
       <v-card tile>
-        <v-progress-linear
-          :value="50"
-          class="my-0"
-          height="3"
-        ></v-progress-linear>
+        <v-progress-linear :value="50" class="my-0" height="3"></v-progress-linear>
 
         <v-list>
           <v-list-item dense>
@@ -201,10 +210,8 @@
               </v-btn>
             </v-list-item-icon>
 
-            <v-list-item-icon
-              class="ml-0"
-              :class="{ 'mr-3': $vuetify.breakpoint.mdAndUp }"
-            >
+            <v-list-item-icon class="ml-0" :class="{ 'mr-3': $vuetify.breakpoint.mdAndUp }"
+              @click="isFullscreen = !isFullscreen">
               <v-btn icon>
                 <v-icon>mdi-chevron-up</v-icon>
               </v-btn>
@@ -213,7 +220,13 @@
         </v-list>
       </v-card>
     </v-bottom-sheet>
-  </v-app>
+    <!-- <div>
+      <h1>Vue Swipeable Bottom Sheet</h1>
+      <button @click="open">Open</button>
+      <button @click="half">Half</button>
+      <button @click="close">Close</button>
+    </div> -->
+  </div>
 </template>
 
 <script>
@@ -335,7 +348,19 @@
           duration: "2:48",
           unread: true
         },
-      ]
+      ],
+      isFullscreen: false
     }),
+    methods: {
+      half () {
+        this.$refs.swipeableBottomSheet.setState("half")
+      },
+      open () {
+        this.$refs.swipeableBottomSheet.setState("open")
+      },
+      close () {
+        this.$refs.swipeableBottomSheet.setState("close")
+      }
+    },
   }
 </script>
