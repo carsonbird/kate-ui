@@ -279,8 +279,77 @@
   </div>
 </template>
 
+<style>
+/*!
+ * vue-swipe-actions v2.0.0-beta.20
+ * (c) 2016-present eCollect
+ * Released under the MIT License.
+ */
+.swipeout {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+}
+
+.swipeout .swipeout-left, .swipeout .swipeout-right {
+	position: absolute;
+	height: 100%;
+	display: flex;
+	z-index: 1;
+}
+
+.swipeout .swipeout-left {
+	left: 0;
+	transform: translateX(-100%);
+}
+
+.swipeout .swipeout-right {
+	right: 0;
+	transform: translateX(100%);
+}
+
+.swipeout .swipeout-content,
+.swipeout .swipeout-action {
+	transition: transform .2s;
+	will-change: transform;
+}
+
+.swipeout.swipeout--no-transition .swipeout-content,
+.swipeout.swipeout--no-transition .swipeout-action {
+  transition: none !important;
+}
+
+.swipeout .swipeout-content {
+	width: 100%;
+}
+
+.swipeout-non-selectable {
+	-webkit-user-select: none !important;
+	   -moz-user-select: none !important;
+	    -ms-user-select: none !important;
+	        user-select: none !important;
+}
+
+.swipeout-no-pointer-events {
+	pointer-events: none !important;
+}
+
+/* SwipeList */
+
+.swipeout-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.swipeout-list-item {
+	flex: 1;
+}
+
+
+</style>
+
 <script>
-  import 'vue-swipe-actions/dist/vue-swipe-actions.css';
+  // import 'vue-swipe-actions/dist/vue-swipe-actions.css';
 
   // import { SwipeableBottomSheet } from "vue-swipeable-bottom-sheet"
   import { SwipeList, SwipeOut } from 'vue-swipe-actions'
