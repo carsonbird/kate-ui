@@ -12,7 +12,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 // import '~/assets/styles.css'
 
-import { SwipeableBottomSheet } from "vue-swipeable-bottom-sheet"
+// import { SwipeableBottomSheet } from "vue-swipeable-bottom-sheet"
 
 export default function (Vue, { router, head, isClient, appOptions }) {
   head.link.push({
@@ -33,7 +33,7 @@ export default function (Vue, { router, head, isClient, appOptions }) {
   // Vue.component('SwipeList', SwipeList);
   // Vue.component('SwipeOut', SwipeOut);
 
-  Vue.component('Drawer', SwipeableBottomSheet);
+  // Vue.component('Drawer', SwipeableBottomSheet);
 
   // Set default layout as a global component
   // Vue.component('Layout', DefaultLayout)
