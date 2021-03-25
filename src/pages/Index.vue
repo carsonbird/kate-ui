@@ -160,7 +160,8 @@
           </v-btn>
       </v-fab-transition>
       </v-main>
-      <Drawer ref="swipeableBottomSheet">
+      <v-footer>
+        <Drawer ref="swipeableBottomSheet">
         <v-card tile>
         <v-progress-linear :value="50" class="my-0" height="3"></v-progress-linear>
 
@@ -196,6 +197,7 @@
         </v-list>
       </v-card>
       </Drawer>
+      </v-footer>
     </v-app>
     <v-bottom-sheet inset hide-overlay :retain-focus="False" :fullscreen="isFullscreen">
       <template v-slot:activator="{ on, attrs }">
@@ -252,7 +254,8 @@
 </template>
 
 <script>
-import 'vue-swipe-actions/dist/vue-swipe-actions.css';
+  import 'vue-swipe-actions/dist/vue-swipe-actions.css';
+
   export default {
     data: () => ({
       drawer: null,
